@@ -1,0 +1,94 @@
+﻿@using SourceCode.Models;
+@model PagedList.IPagedList<User>
+@using PagedList.Mvc;
+@{ ViewBag.Title = "List";
+    Layout = "~/Views/Layout/AdminLayout.cshtml"; }
+@{ User user = Session["User"] as User; }
+<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+<script src="//code.jquery.com/jquery-1.10.2.js"></script>
+<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+<script src="~/Scripts/bootbox.js"></script>
+<script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+
+<ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="@Url.Action("Index")">Trang chủ</a> <i class="fa fa-angle-right"></i></li>
+    <li class="breadcrumb-item"><a href="@Url.Action("List")">Hỏi đáp</a> <i class="fa fa-angle-right"></i></li>
+</ol>
+<div class="agile-grids">
+    <div class="agile-tables">
+        <div class="w3l-table-info">
+            <hr />
+            <div class="w3-search-box">
+                <form action="~/ProductManage/List" method="post">
+                    <input type="text" placeholder="Tìm kiếm..." name="keyword" id="keyword">
+                    <input type="submit" value="">
+                </form>
+            </div><!--//end-search-box-->
+            <p>@ViewBag.message</p>
+            <div class="clearfix"> </div>
+            <hr />
+            <h2>Danh sách đánh giá từ khách hàng</h2>
+           
+            <table id="table">
+                <thead>
+                    <tr>
+                        <th>
+                            Tên khách hàng
+                        </th>
+                        <th>
+                            Địa chỉ
+                        </th>
+                        <th>
+                            Email
+                        </th>
+                        <th>
+                            Số điện thoại
+                        </th>
+                        <th>
+                            Số tiền đã thanh toán
+                        </th>
+                        <th>
+                            Hình ảnh
+                        </th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    @{ int counter1 = 0; }
+                    @foreach (var item in Model)
+                    {
+                        @Html.Hidden(item.ID.ToString())
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.FullName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Address)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Email)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.PhoneNumber)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.AmountPurchased)
+                        </td>
+                        <td>
+                            <span class="prfil-img">
+                                <img src="@Url.Content("~/Content/images/" + item.Avatar)" alt="Avatar" />
+                            </span>
+
+                        </td>
+                    </tr>
+                        @(counter1++)}
+                    @(counter1 = 0)
+                </tbody>
+            </table>
+            <br />
+            <div id='Paging' style="text-align: center">
+                @Html.PagedListPager(Model, page => Url.Action("List", new { page }))
+            </div>
+        </div>
+    </div>
+</div>

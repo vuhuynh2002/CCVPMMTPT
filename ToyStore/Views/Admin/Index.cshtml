@@ -1,0 +1,123 @@
+﻿@model IEnumerable<SourceCode.Models.Order>
+@{
+    ViewBag.Title = "Trang Quản Trị - Trang Chủ";
+    Layout = "~/Views/Layout/AdminLayout.cshtml";
+}
+<ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="index.html">Home</a> <i class="fa fa-angle-right"></i></li>
+</ol>
+<!--four-grids here-->
+<div class="four-grids">
+    <div class="col-md-3 four-grid">
+        <div class="four-agileits">
+            <div class="icon">
+                <i class="glyphicon glyphicon-eye-open" aria-hidden="true"></i>
+            </div>
+            <div class="four-text">
+                <h3>Truy Cập Hiện Tại</h3>
+                <h4> @ViewBag.RealAccessTimes  </h4>
+
+            </div>
+
+        </div>
+    </div>
+    <div class="col-md-3 four-grid">
+        <div class="four-agileinfo">
+            <div class="icon">
+                <i class="glyphicon glyphicon-globe" aria-hidden="true"></i>
+            </div>
+            <div class="four-text">
+                <h3>Tổng Truy Cập</h3>
+                <h4>@ViewBag.SumAccessTimes</h4>
+
+            </div>
+        </div>
+    </div>
+
+
+    <div class="col-md-3 four-grid">
+        <div class="four-w3ls">
+            <div class="icon">
+                <i class="glyphicon glyphicon-signal" aria-hidden="true"></i>
+            </div>
+            <div class="four-text">
+                <h3>Doanh Thu</h3>
+                <h4>@ViewBag.TotalRevenue</h4>
+
+            </div>
+
+        </div>
+    </div>
+    <div class="col-md-3 four-grid">
+        <div class="four-wthree">
+            <div class="icon">
+                <i class="glyphicon glyphicon-list-alt" aria-hidden="true"></i>
+            </div>
+            <div class="four-text">
+                <h3>Đơn Hàng</h3>
+                <h4>@ViewBag.TotalOrder</h4>
+
+            </div>
+
+        </div>
+    </div>
+    <div class="clearfix"></div>
+</div>
+
+<head>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+
+
+@*<body>
+
+        <canvas id="accessChart" width="400" height="100"></canvas>
+
+        <script>
+            // Lấy dữ liệu số lượng truy cập từ ViewBag
+            var sumAccessData = @Html.Raw(Json.Encode(ViewBag.SumAccessTimes));
+
+            // Tạo mảng thời gian, 5 ngày trước, hiện tại và 5 ngày sau
+            var currentDate = new Date();
+            var timeLabels = [];
+            for (var i = -2; i <= 10; i++) {
+                var date = new Date(currentDate);
+                date.setDate(currentDate.getDate() + i);
+                timeLabels.push(date.toLocaleDateString());
+            }
+
+
+            // Cài đặt dữ liệu cho biểu đồ
+            var data = {
+                labels: timeLabels,
+                datasets: [{
+                    label: 'Số lượng truy cập',
+                    data: sumAccessData,
+                    backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                    borderColor: 'rgba(75, 192, 192, 1)',
+                    borderWidth: 1
+                }]
+            };
+
+            // Cài đặt các tùy chọn cho biểu đồ
+            var options = {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            };
+
+            // Lấy thẻ canvas và vẽ biểu đồ
+            var ctx = document.getElementById('accessChart').getContext('2d');
+            var myChart = new Chart(ctx, {
+                type: 'bar',
+                data: data,
+                options: options
+            });
+        </script>
+    </body>
+
+*@
