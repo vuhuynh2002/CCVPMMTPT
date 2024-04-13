@@ -8,7 +8,7 @@
 ## Thông tin
 * Sinh viên thực hiện:
 * Huỳnh Anh Vũ
-*
+* Võ Thanh Minh
 *
 
 
