@@ -9,7 +9,8 @@
 * Sinh viên thực hiện:
 * Huỳnh Anh Vũ
 * Võ Thanh Minh
-*
+* Trần Thanh Hoài
+* Trần Gia Huy
 
 
 ## Giao diện của chương trình
